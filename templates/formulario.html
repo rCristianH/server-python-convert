@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Formulario</title>
+    <style>
+        body {
+            background-color: #221133;
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            align-items: center;
+            justify-content: center;
+        }
+        label{
+            font-size: 18px;
+        }
+
+        .container {
+            background: rgb(96, 46, 204);
+            background: linear-gradient(45deg, rgba(96, 46, 204, 1) 0%, rgba(69, 203, 233, 1) 100%);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        form {
+            padding: 20px;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .label-cargar{
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+        .file{
+            font-size: 16px;
+            width: 310px;
+            display: flex;
+            
+        }
+        .file,
+        .mes,
+        .saldo {
+            border-radius: 8px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.686);
+
+        }
+
+        .label-mes {
+            margin-top: 0px;
+            margin-bottom: 5px;
+        }
+
+        .mes, .saldo {
+            border-radius: 8px;
+            padding: 10px;
+            border: none;
+            font-size: 16px;
+
+        }
+
+        .mes:focus-visible {
+            color: black;
+
+        }
+
+        .label-saldo {
+            margin-top: 0px;
+            margin-bottom: 5px;
+        }
+
+        .saldo {
+            border: none;
+            color: black;
+        }
+        .saldo:focus-visible{
+            color: black;
+        }
+        .button{
+            height: 36px;
+            background-color: #fc8705;
+            border-radius: 24px;
+            width: 65%;
+            border: none;
+            font-size: 16px;
+            margin: 20px auto 0;
+        }
+        .button:hover{
+            background-color: #ffa905;
+        }
+        .button:active{
+            background-color: #8f8f8f;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>CSV a Excel</h1>
+        <form method="POST" action="/" enctype="multipart/form-data">
+            <label class="label-cargar" for="csv_file">Cargar CSV:</label>
+            <input class="file" type="file" name="csv_file"
+                required>
+            <br>
+            <label class="label-mes" for="mes">Mes: </label>
+            <input type="text" name="mes" required class="mes" placeholder="Ingrese el mes:"><br>
+            <label class="label-saldo" for="saldo_inicial">Saldo Inicial:</label>
+            <input class="saldo" type="number" name="saldo_inicial" placeholder="Ingrese el saldo inicial:" required><br>
+            <input class="button" type="submit" value="Procesar y Descargar">
+        </form>
+    </div>
+</body>
+
+</html>
