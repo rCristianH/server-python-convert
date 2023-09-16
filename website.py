@@ -71,10 +71,6 @@ def formulario():
             modificar_ancho(17,"E")
 
 
-
-            """ partes_fecha = fecha.split('-')
-            numero_mes = partes_fecha[1] """
-
             # Define las columnas en el archivo Excel
             ws.append(["LIBRO DE REGISTRO DE OPERACIONES DIARIAS FOLIO No" ])
             ws.append(["NOMBRE", "Pinturas del centro"])
@@ -178,8 +174,6 @@ def formulario():
             ws['B4'].alignment = Alignment(
                     horizontal='center', vertical='center')
             # Crea un objeto de estilo de borde con un borde negro
-            """ border = Border(left=Side(color='000000'), right=Side(color='000000'), 
-                            top=Side(color='000000'), bottom=Side(color='000000')) """
             border = Border(left=Side(style='thin', color='000000'), 
                 right=Side(style='thin', color='000000'), 
                 top=Side(style='thin', color='000000'), 
