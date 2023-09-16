@@ -20,7 +20,7 @@ def formulario():
             reader = csv.DictReader(csvfile)
             #consulta el mes
             segunda_fila = next(reader, None)
-            fecha = segunda_fila['Fecha']   
+            fecha = segunda_fila['Fecha']
             partes_fecha = fecha.split('-')
             numero_mes = partes_fecha[1]
             ficha = numero_mes + " de 12"
@@ -60,7 +60,7 @@ def formulario():
 
 
             def modificar_ancho(i,j):
-                ancho_columna = i  # Cambia este valor según tus 
+                ancho_columna = i  # Cambia este valor según tus
                 ws.column_dimensions[j].width = ancho_columna
 
             modificar_ancho(17,"A")
@@ -70,7 +70,7 @@ def formulario():
             modificar_ancho(17,"E")
 
 
-            
+
             """ partes_fecha = fecha.split('-')
             numero_mes = partes_fecha[1] """
 
@@ -116,7 +116,7 @@ def formulario():
             ws['E1'] = ficha
             ws['E1'].alignment = Alignment(
                     horizontal='center', vertical='center')
-            
+
             def aplicar_formato_contabilidad():
                 # Aplica el estilo de fuente en negrita a los títulos
                 for cell in ws[6]:  # Suponiendo que los títulos están en la primera fila
@@ -151,7 +151,7 @@ def formulario():
                     for cell in fila:
                         cell.style = contabilidad_style
             aplicar_formato_contabilidad()
-            
+
 
 
             def encontrar_ultima_fila(columna):
