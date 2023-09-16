@@ -109,7 +109,7 @@ def formulario():
             aplicar_formato("A2", "B2", 2, 2, 5)
             aplicar_formato("A3", "B3", 3, 2, 5)
             aplicar_formato("A4", "B4", 4, 2, 5)
-            aplicar_formato("A5", "B5", 5, 2, 5)
+            aplicar_formato("A5", "B5", 5, 2, 3)
             ws['E1'] = ficha
             ws['E1'].alignment = Alignment(
                     horizontal='center', vertical='center')
@@ -139,7 +139,7 @@ def formulario():
                 # Aplicar estilo de contabilidad a peso colombiano con 2 decimales
                 contabilidad_style = NamedStyle(name="contabilidad")
                 contabilidad_style.number_format = '_("$"* #,##0.00_);_("$"* -#,##0.00_);_("$"* "-"??_);_(@_)'
-
+                ws["B5"].style = contabilidad_style
                 # Aplica el estilo de contabilidad al rango de celdas
                 for row in tabla_rango:
                     for cell in row:
@@ -172,6 +172,8 @@ def formulario():
             fin_fila = ws.max_row
             #centra
             ws['B4'].alignment = Alignment(
+                    horizontal='center', vertical='center')
+            ws['B5'].alignment = Alignment(
                     horizontal='center', vertical='center')
             # Crea un objeto de estilo de borde con un borde negro
             border = Border(left=Side(style='thin', color='000000'), 
