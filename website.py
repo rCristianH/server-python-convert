@@ -11,7 +11,8 @@ app = Flask(__name__)
 def formulario():
     if request.method == "POST":
         csv_file = request.files["csv_file"]
-        mes = request.form["mes"]
+        mess = request.form["mes"]
+        mes = mess.strip()
         saldo_inicial = float(request.form["saldo_inicial"])
         csv_temp_file = "temp.csv"
         csv_file.save(csv_temp_file)
@@ -176,11 +177,15 @@ def formulario():
             #centra
             ws['B4'].alignment = Alignment(
                     horizontal='center', vertical='center')
-            # Crea un objeto de estilo de borde en negrita
-            border = Border(left=Side(style='thick'), right=Side(
-                style='thick'), top=Side(style='thick'), bottom=Side(style='thick'))
+            # Crea un objeto de estilo de borde con un borde negro
+            """ border = Border(left=Side(color='000000'), right=Side(color='000000'), 
+                            top=Side(color='000000'), bottom=Side(color='000000')) """
+            border = Border(left=Side(style='thin', color='000000'), 
+                right=Side(style='thin', color='000000'), 
+                top=Side(style='thin', color='000000'), 
+                bottom=Side(style='thin', color='000000'))
 
-            # Aplica el borde en negrita a las celdas de la tabla
+            # Aplica el borde a las celdas de la tabla
             for fila in ws.iter_rows(min_row=inicio_fila, max_row=fin_fila, min_col=1, max_col=fin_columna):
                 for cell in fila:
                     cell.border = border
@@ -188,7 +193,7 @@ def formulario():
             # Guarda el archivo Excel
             wb.save('resultado.xlsx')
 
-        return send_file('resultado.xlsx', as_attachment=True, download_name="archivo_excel.xlsx")
+        return send_file('resultado.xlsx', as_attachment=True, download_name=f'Registro Mensual {mes}.xlsx')
 
     return render_template("formulario.html")
 
