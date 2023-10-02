@@ -19,12 +19,6 @@ def formulario():
         # Abre el archivo CSV
         with open(csv_temp_file, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
-            #consulta el mes
-            segunda_fila = next(reader, None)
-            fecha = segunda_fila['Fecha']
-            partes_fecha = fecha.split('-')
-            numero_mes = partes_fecha[1]
-            ficha = numero_mes + " de 12"
 
             # Inicializa variables
             nit = "Nit. 94471472-5"
@@ -35,11 +29,13 @@ def formulario():
             gastos_por_dia = {}
 
             # Procesa las filas del CSV
+            segunda_fila = None
             for row in reader:
                 tipo = row["Tipo"]
                 fecha = row["Fecha"]
                 total = float(row["Total"])
-
+                
+                segunda_fila = fecha
                 # Calcula los valores de ingreso, compras y gastos
                 if tipo == "Factura":
                     if fecha not in ingresos_por_dia:
@@ -54,6 +50,11 @@ def formulario():
                         gastos_por_dia[fecha] = 0
                     gastos_por_dia[fecha] += total
 
+            #consulta el mes
+            fecha = segunda_fila
+            partes_fecha = fecha.split('-')
+            numero_mes = partes_fecha[1]
+            ficha = numero_mes + " de 12"
             # Crea un nuevo archivo Excel
             wb = Workbook()
             ws = wb.active
