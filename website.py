@@ -65,11 +65,11 @@ def formulario():
                 ancho_columna = i  # Cambia este valor según tus
                 ws.column_dimensions[j].width = ancho_columna
 
-            modificar_ancho(17,"A")
-            modificar_ancho(17,"B")
-            modificar_ancho(17,"C")
-            modificar_ancho(17,"D")
-            modificar_ancho(17,"E")
+            modificar_ancho(25,"A")
+            modificar_ancho(25,"B")
+            modificar_ancho(25,"C")
+            modificar_ancho(25,"D")
+            modificar_ancho(25,"E")
 
 
             # Define las columnas en el archivo Excel
